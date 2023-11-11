@@ -2,12 +2,16 @@ function backgroundseason() {
   let now = new Date();
   let month1 = now.getMonth();
 
-  if (month1 === 9 || 10 || 11) {
-    document.querySelector("#backpict").innerHTML = `<img
-          src="pictures/autumn2.jpg"
-          class="card-img backimage"
-          alt="autumn"
-        />`;
+  if (month1 === 2 || 3 || 4) {
+    document.getElementById("backpict").src = "pictures/spring2.jpg";
+    if (month1 === 5 || 6 || 7) {
+      document.getElementById("backpict").src = "pictures/summer2.jpg";
+      if (month1 === 8 || 9 || 10) {
+        document.getElementById("backpict").src = "pictures/autumn2.jpg";
+      } else {
+        document.getElementById("backpict").src = "pictures/winter2.jpg";
+      }
+    }
   }
 }
 
