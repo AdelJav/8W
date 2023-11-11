@@ -1,3 +1,16 @@
+function backgroundseason() {
+  let now = new Date();
+  let month1 = now.getMonth();
+
+  if (month1 === 9 || 10 || 11) {
+    document.querySelector("#backpict").innerHTML = `<img
+          src="pictures/autumn2.jpg"
+          class="card-img backimage"
+          alt="autumn"
+        />`;
+  }
+}
+
 function fxTown(event) {
   event.preventDefault();
   let searchInput = document.querySelector(`#Town`);
