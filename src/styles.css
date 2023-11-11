@@ -1,7 +1,8 @@
 .backimage {
-  opacity: 0.3;
+  opacity: 0.1;
   z-index: -1;
 }
+
 .cardbody {
   display: block;
   margin: 0 auto;

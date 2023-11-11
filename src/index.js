@@ -15,13 +15,13 @@ function backgroundseason() {
   }
 }
 
-function fxTown(event) {
+function townFromSearch(event) {
   event.preventDefault();
   let searchInput = document.querySelector(`#Town`);
   let headingTown = document.querySelector("h1");
   headingTown.innerHTML = searchInput.value;
-  tempUnitsC(event);
-  updateDayAndTime();
+  currentTemp(event);
+  clearSearch();
 }
 
 function clearSearch() {
@@ -29,15 +29,29 @@ function clearSearch() {
   searchInput.value = "";
 }
 
-function tempUnitsC(event) {
-  event.preventDefault();
+function currentTemp(townToShow) {
   let headingTown = document.querySelector("h1").innerHTML;
-  let apiKey = "2daf65f0cdaa917f11026e8a128ce271";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${headingTown}&cnt=4&appid=${apiKey}&units=metric`;
-
-  //console.log(apiUrl);
-  axios.get(apiUrl).then(showDatainC);
+  let apiKey = "9347o49b938f15b43a2at5d07eb97eb4";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${headingTown}&key=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(showCurrentData);
 }
+
+function showCurrentData(response) {
+  let answerData = response.data;
+  document.querySelector("h1").innerHTML = answerData.city;
+  let currTemp = Math.round(answerData.temperature.current);
+  document.querySelector("#temp1").innerHTML = `${currTemp}°C`;
+  let currDesc = answerData.condition.description;
+  currDesc = currDesc.charAt(0).toUpperCase() + currDesc.slice(1);
+  let currWind = answerData.wind.speed;
+  document.querySelector(
+    "#details1"
+  ).innerHTML = `${currDesc} <br /> ${currWind} m/s`;
+  document.getElementById("currentIcon").src = answerData.condition.icon_url;
+  updateDayAndTime();
+}
+
 function showDatainC(response) {
   //let answerData = Math.round(response.data);
   let answerData = response.data.list;
@@ -250,11 +264,12 @@ function showTown(response) {
   showDatainC(response);
   updateDayAndTime();
 }
+
 backgroundseason();
-updateDayAndTime();
+//updateDayAndTime();
 
 let formTown = document.querySelector("form");
-formTown.addEventListener("submit", fxTown);
+formTown.addEventListener("submit", townFromSearch);
 
 let unitsC = document.querySelector("#tempC");
 unitsC.addEventListener("click", tempUnitsC);
@@ -263,5 +278,4 @@ let unitsF = document.querySelector("#tempF");
 unitsF.addEventListener("click", tempUnitsF);
 
 let currentButton = document.querySelector(`#current`);
-
 currentButton.addEventListener("click", getPosition);
