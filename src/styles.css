@@ -1,0 +1,194 @@
+.backimage {
+  opacity: 0.3;
+  z-index: -1;
+}
+.cardbody {
+  display: block;
+  margin: 0 auto;
+  width: 60%;
+}
+
+h1 {
+  color: #7f461b;
+  text-align: left;
+  font-family: "Lovers Quarrel", cursive;
+  font-size: 57px;
+  font-weight: 200;
+  line-height: 1;
+  margin: 0;
+  margin-left: 8%;
+  margin-top: -4%;
+}
+
+.inputtown {
+  border-radius: 5px;
+  background: transparent;
+  border: 3px inset rgb(197, 194, 194, 0.7);
+  font-size: 13px;
+  font-style: italic;
+  margin-left: 44%;
+  width: 20%;
+}
+
+.submitButton {
+  border-radius: 5px;
+  border: 3px inset rgb(197, 194, 194, 0.7);
+  font-size: 13px;
+  font-style: italic;
+}
+.current {
+  border-radius: 5px;
+  border: 3px inset rgb(197, 194, 194, 0.7);
+  font-size: 13px;
+  font-style: italic;
+}
+
+.day1 {
+  color: #7f461b;
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 700;
+  margin: 0;
+  margin-left: 9%;
+  margin-top: -2%;
+  text-align: left;
+  font-family: "Exo", sans-serif;
+}
+.day2 {
+  color: #7f461b;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  font-family: "Exo", sans-serif;
+}
+.day3 {
+  color: #7f461b;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+  font-family: "Exo", sans-serif;
+}
+.day4 {
+  color: #7f461b;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+  font-family: "Exo", sans-serif;
+}
+
+.tempUnits {
+  color: #7f461b;
+  font-size: 15px;
+  text-align: right;
+  font-size: 13px;
+  margin-top: -500px;
+}
+
+.details1 {
+  color: #7f461b;
+  position: static;
+  font-size: 12px;
+  font-family: "Exo", sans-serif;
+  font-weight: 600;
+  margin: 0;
+  margin-left: 10%;
+  text-align: center;
+}
+
+.details2,
+.details3,
+.details4 {
+  color: #7f461b;
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0;
+  text-align: center;
+}
+
+.cbody {
+  height: 8px;
+  padding: 0px 16px;
+}
+
+.groupcards,
+.cardbody1 {
+  background-color: transparent;
+  border-style: none;
+}
+
+.picture-day1 {
+  color: #7f461b;
+  font-size: 65px;
+}
+
+.picture-day2 {
+  color: #7f461b;
+  font-size: 42px;
+}
+
+.picture-day3 {
+  color: #7f461b;
+  font-size: 33px;
+}
+.picture-day4 {
+  color: #7f461b;
+  font-size: 20px;
+}
+
+.temp1 {
+  color: #7f461b;
+  font-weight: 500;
+  font-size: 39px;
+  margin: 0;
+  margin-left: 0;
+  position: relative;
+  top: 15%;
+  text-align: center;
+}
+
+.temp2 {
+  color: #7f461b;
+  font-weight: 600;
+  font-size: 34px;
+  margin: 0;
+  margin-left: 0;
+  margin-top: 40px;
+  text-align: center;
+}
+.temp3 {
+  color: #7f461b;
+  font-weight: 600;
+  font-size: 23px;
+  margin: 0;
+  margin-left: 0;
+  margin-top: 55px;
+  text-align: center;
+}
+.temp4 {
+  color: #7f461b;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  margin-left: 0;
+  margin-top: 60px;
+  text-align: center;
+}
+
+.picture-day1 i {
+  margin-top: 40px;
+}
+
+.cardbody1 {
+  border-right-style: solid;
+  border-left-style: solid;
+  border-color: #7f461b;
+  border-radius: 0;
+}
+.by {
+  color: #7f461b;
+}
+
+.opensource {
+  margin-left: 20%;
+  font-size: 11px;
+}

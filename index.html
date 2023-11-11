@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo&family=Lovers+Quarrel&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montez&family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/485edfbfd2.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+
+    <title>Weather forecast</title>
+  </head>
+  <body>
+    <div class="container">
+      <br />
+      <div class="card cardbody">
+        <img
+          src="pictures/autumn2.jpg"
+          class="card-img backimage"
+          alt="autumn"
+        />
+        <div class="card-img-overlay">
+          <div class="container text-center">
+            <form>
+              <input
+                type="text"
+                name="Town"
+                id="Town"
+                placeholder="Select a town"
+                class="inputtown"
+              />
+              <input type="submit" value="Search" class="submitButton" />
+              <button class="current" id="current">Current</button>
+              <span class="tempUnits">
+                Temperature in <a href="`#`" id="tempC">°C</a> /
+                <a href="`#`" id="tempF">°F</a>
+              </span>
+            </form>
+
+            <h1>Vienna</h1>
+            <p class="day1" id="today">Tuesday, 14:00</p>
+            <div class="card-group groupcards">
+              <div class="card cardbody1">
+                <p class="temp1" id="temp1">18°C</p>
+                <div class="picture-day1">
+                  <i class="fa-solid fa-cloud-sun" id="pic1"></i>
+                </div>
+                <div class="card-body cbody">
+                  <h5 class="card-title day1" id="day1"></h5>
+                  <p class="card-text details1" id="details1">
+                    Mostly cloudyy
+                    <br />
+                    Wind 18 m/s
+                  </p>
+                </div>
+              </div>
+              <div class="card cardbody1">
+                <p class="temp2" id="temp2">20°C</p>
+                <div class="picture-day2">
+                  <i class="fa-solid fa-cloud-sun" id="pic2"></i>
+                </div>
+
+                <div class="card-body cbody">
+                  <h5 class="card-title day2" id="day2">Wednesday</h5>
+                  <p class="card-text details2" id="details2">
+                    Mostly cloudy
+                    <br />
+                    Wind 19 m/s
+                  </p>
+                </div>
+              </div>
+              <div class="card cardbody1">
+                <p class="temp3" id="temp3">18°C</p>
+                <div class="picture-day3">
+                  <i class="fa-solid fa-cloud-showers-heavy" id="pic3"></i>
+                </div>
+
+                <div class="card-body cbody">
+                  <h5 class="card-title day3" id="day3">Thursday</h5>
+                  <p class="card-text details3" id="details3">
+                    Mostly cloudy
+                    <br />
+                    Wind 19 m/s
+                  </p>
+                </div>
+              </div>
+              <div class="card cardbody1">
+                <p class="temp4" id="temp4">17°C</p>
+                <div class="picture-day4">
+                  <i class="fa-solid fa-sun" id="pic4"> </i>
+                </div>
+
+                <div class="card-body cbody">
+                  <h5 class="card-title day4" id="day4">Friday</h5>
+                  <p class="card-text details4" id="details4">
+                    Mostly cloudy
+                    <br />
+                    Wind 19 m/s
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="opensource">
+        <a href="https://github.com/AdelJav/MP_SC">Open-source code</a>
+        <span class="by">by Adel Javorska</span>
+      </div>
+      <br />
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
