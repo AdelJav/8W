@@ -20,7 +20,7 @@ function townFromSearch(event) {
   let searchInput = document.querySelector(`#Town`);
   let headingTown = document.querySelector("h1");
   headingTown.innerHTML = searchInput.value;
-  currentTemp(event);
+  currentTemp();
   clearSearch();
 }
 
@@ -29,7 +29,7 @@ function clearSearch() {
   searchInput.value = "";
 }
 
-function currentTemp(townToShow) {
+function currentTemp() {
   let headingTown = document.querySelector("h1").innerHTML;
   let apiKey = "9347o49b938f15b43a2at5d07eb97eb4";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${headingTown}&key=${apiKey}&units=metric`;
@@ -46,14 +46,32 @@ function showPosition(show) {
   let longitude = show.coords.longitude;
   let apiKey = "9347o49b938f15b43a2at5d07eb97eb4";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
-  https: axios.get(apiUrl).then(showCurrentData);
+  console.log(apiUrl);
+  axios.get(apiUrl).then(showCurrentData);
 }
 
 function showCurrentData(response) {
   let answerData = response.data;
+  console.log(answerData);
   document.querySelector("h1").innerHTML = answerData.city;
   let currTemp = Math.round(answerData.temperature.current);
   document.querySelector("#temp1").innerHTML = `${currTemp}°C`;
+  let currDesc = answerData.condition.description;
+  currDesc = currDesc.charAt(0).toUpperCase() + currDesc.slice(1);
+  let currWind = answerData.wind.speed;
+  document.querySelector(
+    "#details1"
+  ).innerHTML = `${currDesc} <br /> ${currWind} m/s`;
+  document.getElementById("currentIcon").src = answerData.condition.icon_url;
+  updateDayAndTime();
+}
+
+function showCurrentDatainF(response) {
+  let answerData = response.data;
+  console.log(answerData);
+  document.querySelector("h1").innerHTML = answerData.city;
+  let currTemp = Math.round(answerData.temperature.current);
+  document.querySelector("#temp1").innerHTML = `${currTemp}°F`;
   let currDesc = answerData.condition.description;
   currDesc = currDesc.charAt(0).toUpperCase() + currDesc.slice(1);
   let currWind = answerData.wind.speed;
@@ -161,11 +179,9 @@ function showDatainC(response) {
 function tempUnitsF(event) {
   event.preventDefault();
   let headingTown = document.querySelector("h1").innerHTML;
-  let apiKey = "2daf65f0cdaa917f11026e8a128ce271";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${headingTown}&cnt=4&appid=${apiKey}&units=imperial`;
-
-  //console.log(apiUrl);
-  axios.get(apiUrl).then(showDatainF);
+  let apiKey = "9347o49b938f15b43a2at5d07eb97eb4";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${headingTown}&key=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(showCurrentDatainF);
 }
 function showDatainF(response) {
   let answerData = response.data.list;
@@ -267,16 +283,15 @@ function showTown(response) {
 }
 
 backgroundseason();
-//updateDayAndTime();
 
 let formTown = document.querySelector("form");
 formTown.addEventListener("submit", townFromSearch);
 
 let unitsC = document.querySelector("#tempC");
-unitsC.addEventListener("click", tempUnitsC);
+unitsC.addEventListener("click", currentTemp);
 
 let unitsF = document.querySelector("#tempF");
 unitsF.addEventListener("click", tempUnitsF);
 
-let currentButton = document.querySelector(`#current`);
+let currentButton = document.querySelector(`#position`);
 currentButton.addEventListener("click", getPosition);
