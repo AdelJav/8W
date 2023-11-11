@@ -37,6 +37,18 @@ function currentTemp(townToShow) {
   axios.get(apiUrl).then(showCurrentData);
 }
 
+function getPosition() {
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
+
+function showPosition(show) {
+  let latitude = show.coords.latitude;
+  let longitude = show.coords.longitude;
+  let apiKey = "9347o49b938f15b43a2at5d07eb97eb4";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
+  https: axios.get(apiUrl).then(showCurrentData);
+}
+
 function showCurrentData(response) {
   let answerData = response.data;
   document.querySelector("h1").innerHTML = answerData.city;
@@ -240,17 +252,6 @@ function updateDayAndTime() {
 
   let day4Out = document.querySelector("#day4");
   day4Out.innerHTML = days[day4];
-}
-function getPosition() {
-  navigator.geolocation.getCurrentPosition(showPosition);
-}
-
-function showPosition(show) {
-  let latitude = show.coords.latitude;
-  let longitude = show.coords.longitude;
-  let apiKey = "2daf65f0cdaa917f11026e8a128ce271";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showTown);
 }
 
 function showTown(response) {
