@@ -246,7 +246,7 @@ function showTown(response) {
   showDatainC(response);
   updateDayAndTime();
 }
-
+backgroundseason();
 updateDayAndTime();
 
 let formTown = document.querySelector("form");
