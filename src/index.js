@@ -59,7 +59,7 @@ function showCurrentData(response) {
   document.querySelector(
     "#details1"
   ).innerHTML = `${currDesc} <br /> ${currWind} m/s`;
-  document.getElementById("currentIcon").src = answerData.condition.icon_url;
+  document.getElementById("currentIcon0").src = answerData.condition.icon_url;
 
   getForecast();
   updateDayAndTime();
@@ -82,8 +82,6 @@ function showCurrentDatainF(response) {
 }
 
 function forecastData(response) {
-  console.log(response);
-  //let answerData = Math.round(response.data);
   let answerData = response.data.daily;
   let tDay2 = Math.round(answerData[0].temperature.maximum);
   let tDay3 = Math.round(answerData[1].temperature.maximum);
@@ -101,34 +99,14 @@ function forecastData(response) {
   let windDay3 = answerData[2].wind.speed;
   let windDay4 = answerData[3].wind.speed;
 
-  let icons = {
-    "01d": "fa-sun",
-    "02d": "fa-cloud-sun",
-    "03d": "fa-cloud",
-    "04d": "fa-cloud",
-    "09d": "fa-cloud-rain",
-    "10d": "fa-cloud-sun-rain",
-    "11d": "fa-cloud-showers-heavy",
-    "13d": "fa-snowflake",
-    "50d": "fa-smog",
-    "01n": "fa-sun",
-    "02n": "fa-cloud-sun",
-    "03n": "fa-cloud",
-    "04n": "fa-cloud",
-    "09n": "fa-cloud-rain",
-    "10n": "fa-cloud-sun-rain",
-    "11n": "fa-cloud-showers-heavy",
-    "13n": "fa-snowflake",
-    "50n": "fa-smog",
-  };
+  document.getElementById("currentIcon1").src =
+    answerData[0].condition.icon_url;
 
-  //let iconDay2 = answerData[1].weather[0].icon;
-  //let iconDay3 = answerData[2].weather[0].icon;
-  //let iconDay4 = answerData[3].weather[0].icon;
+  document.getElementById("currentIcon2").src =
+    answerData[1].condition.icon_url;
 
-  //let updatedPic2 = icons[iconDay2];
-  //let updatedPic3 = icons[iconDay3];
-  //let updatedPic4 = icons[iconDay4];
+  document.getElementById("currentIcon3").src =
+    answerData[2].condition.icon_url;
 
   document.querySelector("#temp2").innerHTML = `${tDay2}°C`;
   document.querySelector("#temp3").innerHTML = `${tDay3}°C`;
@@ -143,23 +121,6 @@ function forecastData(response) {
   document.querySelector(
     "#details4"
   ).innerHTML = `${descDay4} <br /> ${windDay4} m/s`;
-
-  //document
-  //.querySelector("#pic2")
-  //.classList.remove(document.querySelector("#pic2").classList[1]);
-  //document.querySelector("#pic2").classList.add(updatedPic2);
-
-  //document
-  //.querySelector("#pic3")
-  //.classList.remove(document.querySelector("#pic3").classList[1]);
-  //document.querySelector("#pic3").classList.add(updatedPic3);
-
-  //document
-  // .querySelector("#pic4")
-  // .classList.remove(document.querySelector("#pic4").classList[1]);
-  //document.querySelector("#pic4").classList.add(updatedPic4);
-
-  // updateDayAndTime();
 }
 
 function tempUnitsF(event) {
@@ -261,7 +222,6 @@ function getForecast() {
   let apiKey = "9347o49b938f15b43a2at5d07eb97eb4";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${headingTown}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(forecastData);
-  console.log(apiUrl);
 }
 
 backgroundseason();

@@ -116,19 +116,24 @@ h1 {
   border-style: none;
 }
 
-.picture-day1 {
-  font-size: 65px;
+.icon1 {
+  height: 100px;
+  margin-top: 30px;
+  width: 100px;
 }
 
-.picture-day2 {
-  font-size: 42px;
+.icon2 {
+  height: 80px;
+  width: 80px;
 }
 
-.picture-day3 {
-  font-size: 33px;
+.icon3 {
+  height: 65px;
+  width: 65px;
 }
-.picture-day4 {
-  font-size: 20px;
+.icon4 {
+  height: 50px;
+  width: 50px;
 }
 
 .temp1 {
@@ -170,10 +175,6 @@ h1 {
   text-align: center;
 }
 
-.picture-day1 i {
-  margin-top: 40px;
-}
-
 .cardbody1 {
   border-right-style: solid;
   border-left-style: solid;
@@ -187,12 +188,4 @@ h1 {
 .opensource {
   margin-left: 20%;
   font-size: 11px;
-}
-
-.test {
-  display: inline;
-  margin: 0 auto;
-}
-section {
-  all: unset;
 }
