@@ -33,7 +33,6 @@ function currentTemp() {
   let headingTown = document.querySelector("h1").innerHTML;
   let apiKey = "9347o49b938f15b43a2at5d07eb97eb4";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${headingTown}&key=${apiKey}&units=metric`;
-  console.log(apiUrl);
   axios.get(apiUrl).then(showCurrentData);
 }
 
@@ -46,13 +45,11 @@ function showPosition(show) {
   let longitude = show.coords.longitude;
   let apiKey = "9347o49b938f15b43a2at5d07eb97eb4";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
-  console.log(apiUrl);
   axios.get(apiUrl).then(showCurrentData);
 }
 
 function showCurrentData(response) {
   let answerData = response.data;
-  console.log(answerData);
   document.querySelector("h1").innerHTML = answerData.city;
   let currTemp = Math.round(answerData.temperature.current);
   document.querySelector("#temp1").innerHTML = `${currTemp}°C`;
@@ -63,6 +60,8 @@ function showCurrentData(response) {
     "#details1"
   ).innerHTML = `${currDesc} <br /> ${currWind} m/s`;
   document.getElementById("currentIcon").src = answerData.condition.icon_url;
+
+  getForecast();
   updateDayAndTime();
 }
 
@@ -82,25 +81,22 @@ function showCurrentDatainF(response) {
   updateDayAndTime();
 }
 
-function showDatainC(response) {
+function forecastData(response) {
+  console.log(response);
   //let answerData = Math.round(response.data);
-  let answerData = response.data.list;
-  let tDay1 = Math.round(answerData[0].main.temp);
-  let tDay2 = Math.round(answerData[1].main.temp);
-  let tDay3 = Math.round(answerData[2].main.temp);
-  let tDay4 = Math.round(answerData[3].main.temp);
+  let answerData = response.data.daily;
+  let tDay2 = Math.round(answerData[0].temperature.maximum);
+  let tDay3 = Math.round(answerData[1].temperature.maximum);
+  let tDay4 = Math.round(answerData[2].temperature.maximum);
 
-  let descDay1 = answerData[0].weather[0].description;
-  let descDay2 = answerData[1].weather[0].description;
-  let descDay3 = answerData[2].weather[0].description;
-  let descDay4 = answerData[3].weather[0].description;
-  //console.log(answerData);
-  descDay1 = descDay1.charAt(0).toUpperCase() + descDay1.slice(1);
+  let descDay2 = answerData[0].condition.description;
+  let descDay3 = answerData[1].condition.description;
+  let descDay4 = answerData[2].condition.description;
+
   descDay2 = descDay2.charAt(0).toUpperCase() + descDay2.slice(1);
   descDay3 = descDay3.charAt(0).toUpperCase() + descDay3.slice(1);
   descDay4 = descDay4.charAt(0).toUpperCase() + descDay4.slice(1);
 
-  let windDay1 = answerData[0].wind.speed;
   let windDay2 = answerData[1].wind.speed;
   let windDay3 = answerData[2].wind.speed;
   let windDay4 = answerData[3].wind.speed;
@@ -126,23 +122,18 @@ function showDatainC(response) {
     "50n": "fa-smog",
   };
 
-  let iconDay1 = answerData[0].weather[0].icon;
-  let iconDay2 = answerData[1].weather[0].icon;
-  let iconDay3 = answerData[2].weather[0].icon;
-  let iconDay4 = answerData[3].weather[0].icon;
-  let updatedPic1 = icons[iconDay1];
-  let updatedPic2 = icons[iconDay2];
-  let updatedPic3 = icons[iconDay3];
-  let updatedPic4 = icons[iconDay4];
+  //let iconDay2 = answerData[1].weather[0].icon;
+  //let iconDay3 = answerData[2].weather[0].icon;
+  //let iconDay4 = answerData[3].weather[0].icon;
 
-  document.querySelector("#temp1").innerHTML = `${tDay1}°C`;
+  //let updatedPic2 = icons[iconDay2];
+  //let updatedPic3 = icons[iconDay3];
+  //let updatedPic4 = icons[iconDay4];
+
   document.querySelector("#temp2").innerHTML = `${tDay2}°C`;
   document.querySelector("#temp3").innerHTML = `${tDay3}°C`;
   document.querySelector("#temp4").innerHTML = `${tDay4}°C`;
 
-  document.querySelector(
-    "#details1"
-  ).innerHTML = `${descDay1} <br /> ${windDay1} m/s`;
   document.querySelector(
     "#details2"
   ).innerHTML = `${descDay2} <br /> ${windDay2} m/s`;
@@ -153,27 +144,22 @@ function showDatainC(response) {
     "#details4"
   ).innerHTML = `${descDay4} <br /> ${windDay4} m/s`;
 
-  document
-    .querySelector("#pic1")
-    .classList.remove(document.querySelector("#pic1").classList[1]);
-  document.querySelector("#pic1").classList.add(updatedPic1);
+  //document
+  //.querySelector("#pic2")
+  //.classList.remove(document.querySelector("#pic2").classList[1]);
+  //document.querySelector("#pic2").classList.add(updatedPic2);
 
-  document
-    .querySelector("#pic2")
-    .classList.remove(document.querySelector("#pic2").classList[1]);
-  document.querySelector("#pic2").classList.add(updatedPic2);
+  //document
+  //.querySelector("#pic3")
+  //.classList.remove(document.querySelector("#pic3").classList[1]);
+  //document.querySelector("#pic3").classList.add(updatedPic3);
 
-  document
-    .querySelector("#pic3")
-    .classList.remove(document.querySelector("#pic3").classList[1]);
-  document.querySelector("#pic3").classList.add(updatedPic3);
+  //document
+  // .querySelector("#pic4")
+  // .classList.remove(document.querySelector("#pic4").classList[1]);
+  //document.querySelector("#pic4").classList.add(updatedPic4);
 
-  document
-    .querySelector("#pic4")
-    .classList.remove(document.querySelector("#pic4").classList[1]);
-  document.querySelector("#pic4").classList.add(updatedPic4);
-
-  updateDayAndTime();
+  // updateDayAndTime();
 }
 
 function tempUnitsF(event) {
@@ -270,16 +256,12 @@ function updateDayAndTime() {
   day4Out.innerHTML = days[day4];
 }
 
-function showTown(response) {
-  //let head1 = document.querySelector("h1");
-  //let temp = Math.round(response.data.list[0].main.temp);
-  let town = response.data.city.name;
-  //console.log(temp);
-
-  let headingTown = document.querySelector("h1");
-  headingTown.innerHTML = town;
-  showDatainC(response);
-  updateDayAndTime();
+function getForecast() {
+  let headingTown = document.querySelector("h1").innerHTML;
+  let apiKey = "9347o49b938f15b43a2at5d07eb97eb4";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${headingTown}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(forecastData);
+  console.log(apiUrl);
 }
 
 backgroundseason();

@@ -10,7 +10,7 @@
 }
 
 h1 {
-  color: #7f461b;
+  color: #704214;
   text-align: left;
   font-family: "Lovers Quarrel", cursive;
   font-size: 57px;
@@ -45,7 +45,7 @@ h1 {
 }
 
 .day1 {
-  color: #7f461b;
+  color: #704214;
   font-size: 13px;
   font-style: italic;
   font-weight: 700;
@@ -56,21 +56,21 @@ h1 {
   font-family: "Exo", sans-serif;
 }
 .day2 {
-  color: #7f461b;
+  color: #704214;
   font-size: 16px;
   font-weight: 700;
   margin: 0;
   font-family: "Exo", sans-serif;
 }
 .day3 {
-  color: #7f461b;
+  color: #704214;
   font-size: 15px;
   font-weight: 700;
   margin: 0;
   font-family: "Exo", sans-serif;
 }
 .day4 {
-  color: #7f461b;
+  color: #704214;
   font-size: 14px;
   font-weight: 700;
   margin: 0;
@@ -78,7 +78,7 @@ h1 {
 }
 
 .tempUnits {
-  color: #7f461b;
+  color: #704214;
   font-size: 15px;
   text-align: right;
   font-size: 13px;
@@ -86,20 +86,19 @@ h1 {
 }
 
 .details1 {
-  color: #7f461b;
+  color: #704214;
   position: static;
   font-size: 12px;
   font-family: "Exo", sans-serif;
   font-weight: 600;
   margin: 0;
-  margin-left: 10%;
   text-align: center;
 }
 
 .details2,
 .details3,
 .details4 {
-  color: #7f461b;
+  color: #704214;
   font-size: 12px;
   font-weight: 500;
   margin: 0;
@@ -118,26 +117,22 @@ h1 {
 }
 
 .picture-day1 {
-  color: #7f461b;
   font-size: 65px;
 }
 
 .picture-day2 {
-  color: #7f461b;
   font-size: 42px;
 }
 
 .picture-day3 {
-  color: #7f461b;
   font-size: 33px;
 }
 .picture-day4 {
-  color: #7f461b;
   font-size: 20px;
 }
 
 .temp1 {
-  color: #7f461b;
+  color: #704214;
   font-weight: 500;
   font-size: 39px;
   margin: 0;
@@ -148,7 +143,7 @@ h1 {
 }
 
 .temp2 {
-  color: #7f461b;
+  color: #704214;
   font-weight: 600;
   font-size: 34px;
   margin: 0;
@@ -157,7 +152,7 @@ h1 {
   text-align: center;
 }
 .temp3 {
-  color: #7f461b;
+  color: #704214;
   font-weight: 600;
   font-size: 23px;
   margin: 0;
@@ -166,7 +161,7 @@ h1 {
   text-align: center;
 }
 .temp4 {
-  color: #7f461b;
+  color: #704214;
   font-size: 18px;
   font-weight: 600;
   margin: 0;
@@ -182,14 +177,22 @@ h1 {
 .cardbody1 {
   border-right-style: solid;
   border-left-style: solid;
-  border-color: #7f461b;
+  border-color: #704214;
   border-radius: 0;
 }
 .by {
-  color: #7f461b;
+  color: #704214;
 }
 
 .opensource {
   margin-left: 20%;
   font-size: 11px;
+}
+
+.test {
+  display: inline;
+  margin: 0 auto;
+}
+section {
+  all: unset;
 }
