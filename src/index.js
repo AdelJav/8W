@@ -67,17 +67,9 @@ function showCurrentData(response) {
 
 function showCurrentDatainF(response) {
   let answerData = response.data;
-  console.log(answerData);
-  document.querySelector("h1").innerHTML = answerData.city;
   let currTemp = Math.round(answerData.temperature.current);
   document.querySelector("#temp1").innerHTML = `${currTemp}°F`;
-  let currDesc = answerData.condition.description;
-  currDesc = currDesc.charAt(0).toUpperCase() + currDesc.slice(1);
-  let currWind = answerData.wind.speed;
-  document.querySelector(
-    "#details1"
-  ).innerHTML = `${currDesc} <br /> ${currWind} m/s`;
-  document.getElementById("currentIcon").src = answerData.condition.icon_url;
+  getForecastInF();
   updateDayAndTime();
 }
 
@@ -130,42 +122,17 @@ function tempUnitsF(event) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${headingTown}&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showCurrentDatainF);
 }
-function showDatainF(response) {
-  let answerData = response.data.list;
-  let tDay1 = Math.round(answerData[0].main.temp);
-  let tDay2 = Math.round(answerData[1].main.temp);
-  let tDay3 = Math.round(answerData[2].main.temp);
-  let tDay4 = Math.round(answerData[3].main.temp);
 
-  let descDay1 = answerData[0].weather[0].description;
-  let descDay2 = answerData[1].weather[0].description;
-  let descDay3 = answerData[2].weather[0].description;
-  let descDay4 = answerData[3].weather[0].description;
-  //console.log(answerData);
+function showForecastDatainF(response) {
+  let answerData = response.data.daily;
+  console.log(answerData);
+  let tDay2 = Math.round(answerData[0].temperature.maximum);
+  let tDay3 = Math.round(answerData[1].temperature.maximum);
+  let tDay4 = Math.round(answerData[2].temperature.maximum);
 
-  let windDay1 = answerData[0].wind.speed;
-  let windDay2 = answerData[1].wind.speed;
-  let windDay3 = answerData[2].wind.speed;
-  let windDay4 = answerData[3].wind.speed;
-
-  document.querySelector("#temp1").innerHTML = `${tDay1}°F`;
   document.querySelector("#temp2").innerHTML = `${tDay2}°F`;
   document.querySelector("#temp3").innerHTML = `${tDay3}°F`;
   document.querySelector("#temp4").innerHTML = `${tDay4}°F`;
-
-  document.querySelector(
-    "#details1"
-  ).innerHTML = `${descDay1} <br /> ${windDay1} m/s`;
-  document.querySelector(
-    "#details2"
-  ).innerHTML = `${descDay2} <br /> ${windDay2} m/s`;
-  document.querySelector(
-    "#details3"
-  ).innerHTML = `${descDay3} <br /> ${windDay3} m/s`;
-  document.querySelector(
-    "#details4"
-  ).innerHTML = `${descDay4} <br /> ${windDay4} m/s`;
-  updateDayAndTime();
 }
 
 function updateDayAndTime() {
@@ -222,6 +189,13 @@ function getForecast() {
   let apiKey = "9347o49b938f15b43a2at5d07eb97eb4";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${headingTown}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(forecastData);
+}
+
+function getForecastInF() {
+  let headingTown = document.querySelector("h1").innerHTML;
+  let apiKey = "9347o49b938f15b43a2at5d07eb97eb4";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${headingTown}&key=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(showForecastDatainF);
 }
 
 backgroundseason();
