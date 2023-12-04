@@ -2,14 +2,48 @@ function backgroundseason() {
   let now = new Date();
   let month1 = now.getMonth();
 
-  if (month1 === 2 || 3 || 4) {
-    document.getElementById("backpict").src = "pictures/spring2.jpg";
-    if (month1 === 5 || 6 || 7) {
-      document.getElementById("backpict").src = "pictures/summer2.jpg";
-      if (month1 === 8 || 9 || 10) {
-        document.getElementById("backpict").src = "pictures/autumn2.jpg";
-      } else {
-        document.getElementById("backpict").src = "pictures/winter2.jpg";
+  if (month1 === 11) {
+    document.getElementById("backpict").src = "/pictures/winter2.jpg";
+    if (month1 === 0) {
+      document.getElementById("backpict").src = "/pictures/winter2.jpg";
+      if (month1 === 1) {
+        document.getElementById("backpict").src = "/pictures/winter2.jpg";
+        if (month1 === 2) {
+          document.getElementById("backpict").src = "/pictures/spring2.jpg";
+          if (month1 === 3) {
+            document.getElementById("backpict").src = "/pictures/spring2.jpg";
+            if (month1 === 4) {
+              document.getElementById("backpict").src = "/pictures/spring2.jpg";
+              if (month1 === 5) {
+                document.getElementById("backpict").src =
+                  "/pictures/summer2.jpg";
+                if (month1 === 6) {
+                  document.getElementById("backpict").src =
+                    "/pictures/summer2.jpg";
+                  if (month1 === 7) {
+                    document.getElementById("backpict").src =
+                      "/pictures/summer2.jpg";
+                    if (month1 === 8) {
+                      document.getElementById("backpict").src =
+                        "/pictures/autumn2.jpg";
+                      if (month1 === 9) {
+                        document.getElementById("backpict").src =
+                          "/pictures/autumn2.jpg";
+                        if (month1 === 10) {
+                          document.getElementById("backpict").src =
+                            "/pictures/autumn2.jpg";
+                        } else {
+                          document.getElementById("backpict").src =
+                            "/pictures/winter2.jpg";
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -50,6 +84,7 @@ function showPosition(show) {
 
 function showCurrentData(response) {
   let answerData = response.data;
+  console.log(answerData.temperature);
   document.querySelector("h1").innerHTML = answerData.city;
   let currTemp = Math.round(answerData.temperature.current);
   document.querySelector("#temp1").innerHTML = `${currTemp}°C`;
